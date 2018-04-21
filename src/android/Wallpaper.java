@@ -71,7 +71,8 @@ public class Wallpaper extends CordovaPlugin
             }
             else{
             	if (SET_WALLPAPER.equals(action)) {
-	            	InputStream ins = this.cordova.getActivity().getApplicationContext().getAssets().open(path);	            	
+	            	//InputStream ins = this.cordova.getActivity().getApplicationContext().getAssets().open(path);	 
+			InputStream ins = FileHelper.getInputStreamFromUriString(path, this.cordova);
 	            	wallpaperManager.setStream(ins);
 	            	if(saveLocalImage(direct,ins,imageTitle)){
 	            		callbackContext.success();
